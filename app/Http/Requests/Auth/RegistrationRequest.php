@@ -28,7 +28,7 @@ class RegistrationRequest extends FormRequest
             "phone"         => ["required", "string", "string", "max:255", "unique:users"],
             "email"         => ["required", "string", "email", "max:255", "unique:users"],
             "password"      => ["required", "string", "min:8"],
-            "ref"           => ["required", "string", "min:8"],
+            "device_name"   => ["required", "string", "min:1", 'max:32'],
         ];
     }
 }

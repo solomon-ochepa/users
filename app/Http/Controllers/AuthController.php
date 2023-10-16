@@ -27,7 +27,7 @@ class AuthController extends Controller
             "password",
         ]));
 
-        $token = $user->createToken("auth_token")->plainTextToken;
+        $token = $user->createToken($request->device_name)->plainTextToken;
 
         return response()->json([
             'status' => true,
@@ -64,7 +64,7 @@ class AuthController extends Controller
 
         $user = User::where("username", $request["username"])->firstOrFail();
 
-        $token = $user->createToken($request->ref)->plainTextToken;
+        $token = $user->createToken($request->device_name)->plainTextToken;
 
         return response()->json([
             'status' => true,
