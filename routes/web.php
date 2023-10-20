@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return [
         'status' => false,
-        'message' => 'Request failed.'
+        'message' => 'Request failed.',
     ];
 });
 
@@ -39,7 +39,7 @@ Route::group([
 
     $guard = config('passport.guard', null);
 
-    Route::middleware(['web', $guard ? 'auth:' . $guard : 'auth'])->group(function () {
+    Route::middleware(['web', $guard ? 'auth:'.$guard : 'auth'])->group(function () {
         Route::post('/token/refresh', [
             'uses' => 'TransientTokenController@refresh',
             'as' => 'token.refresh',

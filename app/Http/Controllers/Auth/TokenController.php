@@ -13,11 +13,11 @@ class TokenController extends Controller
 {
     public $user;
 
-    function __construct()
+    public function __construct()
     {
         $this->user = auth('sanctum')->user();
 
-        if (!$this->user) {
+        if (! $this->user) {
             return response()->json([
                 'status' => false,
                 'message' => 'Unauthenticated.',
@@ -48,7 +48,7 @@ class TokenController extends Controller
                 'status' => true,
                 'data' => [
                     'tokens' => $tokens,
-                ]
+                ],
             ]);
         }
 
@@ -65,31 +65,31 @@ class TokenController extends Controller
     {
         // Validate the incoming request
         $validator = Validator::make($request->all(), [
-            'username'  => ['required', 'string'],
-            'password'  => ['required'],
-            'ref'       => ['required'],
+            'username' => ['required', 'string'],
+            'password' => ['required'],
+            'ref' => ['required'],
         ]);
 
         // Validation failed
         if ($validator->fails()) {
             return response()->json([
-                'status'    => false,
-                'message'   => 'Validation failed.',
-                'errors'    => $validator->errors(),
+                'status' => false,
+                'message' => 'Validation failed.',
+                'errors' => $validator->errors(),
             ]);
         }
 
         // Find user
         $user = User::where('username', $request->username)
             ->orWhere('email', $request->username)
-            ->orWhere('phone', trim($request->username, "+"))
+            ->orWhere('phone', trim($request->username, '+'))
             ->first();
 
         // Invalid credentials
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             return response()->json([
-                'status'    => false,
-                'message'   => 'The provided credentials are incorrect.',
+                'status' => false,
+                'message' => 'The provided credentials are incorrect.',
             ]);
         }
 
@@ -97,8 +97,8 @@ class TokenController extends Controller
             'status' => true,
             'data' => [
                 'access_token' => $user->createToken($request->ref)->plainTextToken,
-                "token_type" => "Bearer",
-            ]
+                'token_type' => 'Bearer',
+            ],
         ]);
     }
 
