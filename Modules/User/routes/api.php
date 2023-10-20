@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Modules\User\app\Http\Controllers\Api\UserController;
 
 /*
     |--------------------------------------------------------------------------
@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
     |
 */
 
-Route::middleware(['api'])->prefix('v1')->group(function () {
-    Route::get('/user', fn (Request $request) => $request->user());
+Route::prefix('v1')->group(function () {
+    Route::middleware(['auth:api'])->group(function () {
+        Route::post('/user', [UserController::class, 'user'])->name('user');
+    });
 });
