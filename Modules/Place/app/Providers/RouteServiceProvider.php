@@ -2,8 +2,8 @@
 
 namespace Modules\Place\app\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -53,8 +53,8 @@ class RouteServiceProvider extends ServiceProvider
         }
 
         // Central domains route (web)
-        $central_domains    = config('tenancy.central_domains');
-        $web_route          = module_path('Place', '/routes/web.php');
+        $central_domains = config('tenancy.central_domains');
+        $web_route = module_path('Place', '/routes/web.php');
 
         if ($central_domains) {
             foreach ($central_domains as $domain) {
@@ -80,8 +80,8 @@ class RouteServiceProvider extends ServiceProvider
         }
 
         // Central domains route (api)
-        $central_domains    = config('tenancy.central_domains');
-        $api_route          = module_path('Place', '/routes/api.php');
+        $central_domains = config('tenancy.central_domains');
+        $api_route = module_path('Place', '/routes/api.php');
 
         if ($central_domains) {
             foreach ($central_domains as $domain) {

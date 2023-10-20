@@ -49,6 +49,7 @@ class PlaceController extends Controller
     {
         //
         session()->flash('status', 'Record created successfully.');
+
         return redirect(route('place.index'));
     }
 
@@ -83,6 +84,7 @@ class PlaceController extends Controller
     {
         //
         session()->flash('status', 'Record updated successfully.');
+
         return redirect(route('place.index'));
     }
 
@@ -93,6 +95,7 @@ class PlaceController extends Controller
     {
         //
         session()->flash('status', 'Record deleted successfully.');
+
         return redirect(route('place.index'));
     }
 }

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'name' => 'OAuth'
+    'name' => 'OAuth',
 ];
