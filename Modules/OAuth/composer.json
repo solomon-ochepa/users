@@ -1,0 +1,23 @@
+{
+    "name": "solomon-ochepa/oauth",
+    "description": "",
+    "authors": [
+        {
+            "name": "Solomon Ochepa",
+            "email": "solomonochepa@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\OAuth\\": ""
+        }
+    }
+}
