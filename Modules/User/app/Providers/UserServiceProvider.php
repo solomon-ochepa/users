@@ -6,22 +6,14 @@ use Illuminate\Support\ServiceProvider;
 
 class UserServiceProvider extends ServiceProvider
 {
-    /**
-     * @var string
-     */
     protected $moduleName = 'User';
 
-    /**
-     * @var string
-     */
     protected $moduleNameLower = 'user';
 
     /**
      * Boot the application events.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerTranslations();
         $this->registerConfig();
@@ -31,20 +23,16 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
     }
 
     /**
      * Register config.
-     *
-     * @return void
      */
-    protected function registerConfig()
+    protected function registerConfig(): void
     {
         $this->publishes([
             module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php'),
@@ -56,10 +44,8 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Register views.
-     *
-     * @return void
      */
-    public function registerViews()
+    public function registerViews(): void
     {
         $viewPath = resource_path('views/modules/'.$this->moduleNameLower);
 
@@ -74,10 +60,8 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Register translations.
-     *
-     * @return void
      */
-    public function registerTranslations()
+    public function registerTranslations(): void
     {
         $langPath = resource_path('lang/modules/'.$this->moduleNameLower);
 
@@ -92,10 +76,8 @@ class UserServiceProvider extends ServiceProvider
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }
