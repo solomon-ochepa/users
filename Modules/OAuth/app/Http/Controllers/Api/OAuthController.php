@@ -51,7 +51,7 @@ class OAuthController extends Controller
 
     public function login(LoginRequest $request): JsonResponse
     {
-        if (!Auth::attempt($request->only('username', 'password'))) {
+        if (! Auth::attempt($request->only('username', 'password'))) {
             return response()->json(
                 [
                     'status' => false,
